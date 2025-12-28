@@ -1,14 +1,13 @@
-body{
-    background-color: rgb(248, 247, 253);
-    font-family: Roboto;
-}
-
-.top-container{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    align-items: center;
-    margin-bottom: 50px;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-image: url('https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg'); /* ضع رابط صورتك هنا */
+    background-size: cover;        /* لتغطية كامل الشاشة */
+    background-position: center;   /* للتمركز */
+    background-repeat: no-repeat;  /* عدم التكرار */
+    background-attachment: fixed;  /* يبقى ثابت عند التمرير */
 }
 
 .filter-button-all,
