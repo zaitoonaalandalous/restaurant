@@ -4,32 +4,54 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Restaurant Menu</title>
+
+<!-- الخطوط -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
-/* ===== GLOBAL ===== */
+/* ===== BODY & BACKGROUND ===== */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #f8f7fd;
+    background-image: url('background.jpg'); /* ضع رابط خلفيتك هنا */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #333;
 }
 
+/* ===== CONTAINER ===== */
 .container {
     max-width: 1200px;
     margin: auto;
-    padding: 15px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85); /* خلفية شبه شفافة */
+    border-radius: 15px;
+}
+
+/* ===== HEADER ===== */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+header img {
+    width: 120px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
 }
 
 h1 {
-    text-align: center;
-    margin: 20px 0 10px 0;
     font-size: 2.2em;
     font-weight: 700;
     color: #c99301;
+    margin: 0;
 }
 
 /* ===== FILTER BUTTONS ===== */
@@ -141,7 +163,10 @@ h1 {
 <body>
 
 <div class="container">
-    <h1>Our Menu</h1>
+    <header>
+        <img src="logo.png" alt="Restaurant Logo"> <!-- ضع رابط لوغو المطعم هنا -->
+        <h1>Our Menu</h1>
+    </header>
 
     <div class="filter-buttons">
         <button data-type="all">All</button>
@@ -152,7 +177,7 @@ h1 {
     </div>
 
     <div class="menu-grid" id="menu-grid">
-        <!-- Menu items will appear here -->
+        <!-- Menu items ستظهر هنا -->
     </div>
 </div>
 
