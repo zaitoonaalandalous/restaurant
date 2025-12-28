@@ -1,31 +1,211 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="./menu.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="top-container">
-            <p class="title-text">Our Menu</p>
-            <div class="linebreak"></div>
-            <div class="filter-container">
-                <button class="filter-button-all">All</button>
-                <button class="filter-button-breakfast">Breakfast</button>
-                <button class="filter-button-lunch">Lunch</button>
-                <button class="filter-button-dinner">Dinner</button>
-                <button class="filter-button-shakes">Shakes</button>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f7fd;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0 10px 0;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #c99301;
+}
+
+/* ===== FILTER BUTTONS ===== */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+
+.filter-buttons button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.filter-buttons button:hover {
+    background-color: #c99301;
+}
+
+/* ===== MENU GRID ===== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* ===== MENU ITEM ===== */
+.menu-item {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-info {
+    padding: 15px;
+}
+
+.menu-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.menu-info p {
+    margin: 5px 0 0 0;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.menu-price {
+    font-weight: 700;
+    color: #c99301;
+    margin-top: 10px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-buttons button {
+        width: 90%;
+        font-size: 1.05em;
+        padding: 14px 0;
+    }
+
+    .menu-item img {
+        height: 180px;
+    }
+
+    .menu-info h3 {
+        font-size: 1.1em;
+    }
+
+    .menu-info p {
+        font-size: 0.9em;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Our Menu</h1>
+
+    <div class="filter-buttons">
+        <button data-type="all">All</button>
+        <button data-type="breakfast">Breakfast</button>
+        <button data-type="lunch">Lunch</button>
+        <button data-type="dinner">Dinner</button>
+        <button data-type="shakes">Shakes</button>
+    </div>
+
+    <div class="menu-grid" id="menu-grid">
+        <!-- Menu items will appear here -->
+    </div>
+</div>
+
+<script>
+// ===== DATA =====
+const menuItems = [
+    {name: 'Pepperoni Pizza', type: 'breakfast', price: '15.99', image: 'pizza.jpg', description: 'Delicious pepperoni pizza with fresh ingredients.'},
+    {name: 'Chicken Salad', type: 'dinner', price: '6.00', image: 'salad.jpg', description: 'Fresh chicken salad with veggies.'},
+    {name: 'Double Smash Burger', type: 'breakfast', price: '10.99', image: 'hamburger.png', description: 'Juicy double smash burger with cheese.'},
+    {name: 'Classic Lasagna', type: 'dinner', price: '5.99', image: 'lasagna.jpg', description: 'Classic Italian lasagna.'},
+    {name: 'Icecream Sundae', type: 'shakes', price: '4.50', image: 'icecream.png', description: 'Sweet ice cream sundae with toppings.'}
+];
+
+// ===== FUNCTIONS =====
+const menuGrid = document.getElementById('menu-grid');
+const filterButtons = document.querySelectorAll('.filter-buttons button');
+
+function displayMenu(items) {
+    menuGrid.innerHTML = '';
+    items.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('menu-item');
+        div.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="menu-info">
+                <h3>${item.name}</h3>
+                <p>${item.description}</p>
+                <p class="menu-price">$${item.price}</p>
             </div>
-        </div>
-        <div class="grid-container">
-            <div class="main-grid">        
-            </div>
-        </div>
-        
-    </body>
-    <script src="./menu.js"></script>
+        `;
+        menuGrid.appendChild(div);
+    });
+}
+
+function filterMenu(type) {
+    if(type === 'all') {
+        displayMenu(menuItems);
+    } else {
+        displayMenu(menuItems.filter(item => item.type === type));
+    }
+}
+
+// ===== EVENTS =====
+filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const type = btn.getAttribute('data-type');
+        filterMenu(type);
+    });
+});
+
+// ===== INITIAL DISPLAY =====
+displayMenu(menuItems);
+</script>
+
+</body>
 </html>
