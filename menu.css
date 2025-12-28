@@ -185,56 +185,66 @@ button:focus{
     }
 
 }
-/* تحسين وضوح الصفحة على الهواتف */
 @media (max-width: 480px) {
     body {
-        font-size: 16px; /* تكبير النصوص */
+        font-size: 18px; /* تكبير النصوص للوضوح */
     }
 
     .top-container {
         padding: 10px;
+        margin-bottom: 30px;
     }
 
     .title-text {
-        font-size: 1.8em; /* تكبير عنوان Our Menu */
+        font-size: 2em; /* تكبير عنوان Our Menu */
         text-align: center;
     }
 
     .linebreak {
-        width: 60px;
+        width: 70px; /* أكبر للوضوح */
         margin: 10px auto;
     }
 
     .filter-container {
         display: flex;
-        flex-direction: column; /* ترتيب الأزرار عموديًا */
+        flex-direction: column;
         align-items: center;
     }
 
     .filter-container button {
-        width: 80%; /* عرض الأزرار مناسب للهاتف */
-        font-size: 1em;
-        padding: 12px 0;
-        margin: 6px 0;
+        width: 90%; /* عرض أكبر للزر */
+        font-size: 1.1em; /* تكبير الخط */
+        padding: 14px 0;
+        margin: 8px 0;
     }
 
     .grid-container {
-        padding: 5px;
+        padding: 10px;
     }
 
     .main-grid {
-        display: flex;
-        flex-direction: column; /* جعل العناصر عمودية للقراءة */
-        align-items: center;
+        width: 100%; /* ملء العرض بالكامل */
+        grid-template-columns: 1fr; /* عمود واحد للهاتف */
+        row-gap: 20px;
+        justify-items: center;
     }
 
     .menu-item {
-        width: 90%; /* العناصر بعرض مناسب */
-        margin-bottom: 15px;
+        width: 95%; /* أكبر عرض للعناصر */
+        flex-direction: column;
+        margin-bottom: 20px;
     }
 
-    .menu-item img {
+    .item-image {
         width: 100%; /* الصور تغطي العنصر بالكامل */
         height: auto;
+    }
+
+    .bottom-item-container {
+        font-size: 16px; /* تكبير نصوص الوصف */
+    }
+
+    .top-item-container {
+        font-size: 18px; /* تكبير اسم العنصر */
     }
 }
