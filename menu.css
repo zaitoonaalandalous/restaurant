@@ -139,60 +139,15 @@ button:focus{
     margin-right: auto;
 }
 
-@media (max-width:1299px){
-    .main-grid{
-        grid-template-columns: 1fr;
-        row-gap: 20px;
-        width: 80%;
-    }
-
-    .menu-item{
-        display: flex;
-        flex-direction: row;
-    }
-}
-
-@media(max-width: 899px){
-
-    .top-item-container{
-        padding-top: 0px;
-    }
-
-    .menu-item{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .image-container{
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 300px;
-        margin-bottom: 20px;
-    }
-
-    .item-image{
-        object-fit: cover;
-        width: 99.36%;
-        height: 100%;
-        border-color: rgb(201, 147, 1);
-        border-width: 2px;
-        border-style: solid; 
-        border-radius: 10px;
-    }
-
-    .bottom-item-container{
-        margin-bottom: 10px;
-    }
-
-}
+/* ===== تحسين وضوح الصفحة على الهواتف ===== */
 @media (max-width: 480px) {
     body {
-        font-size: 18px; /* تكبير النصوص للوضوح */
+        font-size: 16px; /* تكبير النصوص للوضوح */
     }
 
     .top-container {
         padding: 10px;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 
     .title-text {
@@ -207,30 +162,33 @@ button:focus{
 
     .filter-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: column; /* ترتيب الأزرار عموديًا */
         align-items: center;
+        gap: 8px; /* مسافة بين الأزرار */
     }
 
     .filter-container button {
         width: 90%; /* عرض أكبر للزر */
         font-size: 1.1em; /* تكبير الخط */
-        padding: 14px 0;
-        margin: 8px 0;
+        padding: 12px 0;
+        margin: 4px 0;
+        border-radius: 15px; /* أزرار أكبر وأكثر احترافية */
     }
 
     .grid-container {
-        padding: 10px;
+        padding: 5px;
     }
 
     .main-grid {
-        width: 100%; /* ملء العرض بالكامل */
+        width: 100%; /* ملء الشاشة بالكامل */
+        display: grid;
         grid-template-columns: 1fr; /* عمود واحد للهاتف */
-        row-gap: 20px;
+        gap: 20px;
         justify-items: center;
     }
 
     .menu-item {
-        width: 95%; /* أكبر عرض للعناصر */
+        width: 95%; /* تقريبًا كامل عرض الشاشة */
         flex-direction: column;
         margin-bottom: 20px;
     }
@@ -238,13 +196,18 @@ button:focus{
     .item-image {
         width: 100%; /* الصور تغطي العنصر بالكامل */
         height: auto;
-    }
-
-    .bottom-item-container {
-        font-size: 16px; /* تكبير نصوص الوصف */
+        border-radius: 10px;
     }
 
     .top-item-container {
-        font-size: 18px; /* تكبير اسم العنصر */
+        font-size: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .bottom-item-container {
+        font-size: 14px; /* تكبير نص الوصف قليلاً */
+        line-height: 20px;
     }
 }
